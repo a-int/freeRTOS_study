@@ -23,4 +23,5 @@ target_link_options(freertos.elf  PRIVATE
 
 target_link_libraries(freertos.elf
 	llcm
+	freertos_kernel
 )

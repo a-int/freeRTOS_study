@@ -63,7 +63,18 @@ add_compile_options(
     ${compile_flags}
 )
 
+add_library(freertos_config INTERFACE)
+target_include_directories(freertos_config SYSTEM 
+    INTERFACE
+    include
+) # The config file directory\n"
+
+target_compile_definitions(freertos_config INTERFACE
+    projCOVERAGE_TEST=0
+)
+
 # include after options have been defined
+add_subdirectory("external/freertos_kernel")
 add_subdirectory("external/llcm4")
 add_subdirectory("src/")
 
