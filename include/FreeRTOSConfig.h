@@ -86,6 +86,7 @@
 extern uint32_t SystemCoreClock;
 
 #define configUSE_PREEMPTION			1
+#define configUSE_TIME_SLICING		1
 #define configUSE_IDLE_HOOK				0
 #define configUSE_TICK_HOOK				0
 #define configCPU_CLOCK_HZ				( SystemCoreClock )
@@ -105,7 +106,8 @@ extern uint32_t SystemCoreClock;
 #define configUSE_APPLICATION_TASK_TAG	0
 #define configUSE_COUNTING_SEMAPHORES	1
 #define configGENERATE_RUN_TIME_STATS	0
-
+#define configSUPPORT_DYNAMIC_ALLOCATION 1
+#define configAPPLICATION_ALLOCATED_HEAP  0
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 		0
 #define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
@@ -125,7 +127,8 @@ to exclude the API function. */
 #define INCLUDE_vTaskSuspend			1
 #define INCLUDE_vTaskDelayUntil			1
 #define INCLUDE_vTaskDelay				1
-
+#define configUSE_QUEUE_SETS	1
+#define configUSE_TIMERS		1
 /* Cortex-M specific definitions. */
 #ifdef __NVIC_PRIO_BITS
 	/* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */

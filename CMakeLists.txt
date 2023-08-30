@@ -30,7 +30,7 @@ set(compile_flags
     -Wformat-signedness
     -Wundef
     -Wconversion
-    -Werror
+    # -Werror
     $<$<COMPILE_LANGUAGE:CXX>:-Weffc++>
     -ffunction-sections 
     -fdata-sections 
