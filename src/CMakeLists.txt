@@ -89,6 +89,7 @@ target_link_libraries(timers13.elf
 	llcm
 	usart
 )
+
 add_executable( timers14.elf 
 	${SOURCES}
 	timers14.c
@@ -105,6 +106,27 @@ target_link_options(timers14.elf  PRIVATE
 )
 
 target_link_libraries(timers14.elf
+	freertos_kernel
+	llcm
+	usart
+)
+
+add_executable( notification-1.elf 
+	${SOURCES}
+	notification-1.c
+)
+
+target_include_directories(notification-1.elf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include/vendor/)
+target_include_directories(notification-1.elf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include/freertos_study/)
+target_include_directories(notification-1.elf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../external/llcm4/include/llcm/)
+
+target_link_options(notification-1.elf  PRIVATE 
+    ${arch_flags} 
+    ${common_flags}
+    ${link_flags}
+)
+
+target_link_libraries(notification-1.elf
 	freertos_kernel
 	llcm
 	usart

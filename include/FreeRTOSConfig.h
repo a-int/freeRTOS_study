@@ -97,7 +97,8 @@ extern uint32_t SystemCoreClock;
 #define configMAX_TASK_NAME_LEN			( 10 )
 #define configUSE_TRACE_FACILITY		1
 #define configUSE_16_BIT_TICKS			0
-#define configIDLE_SHOULD_YIELD			1
+#define configIDLE_SHOULD_YIELD			0
+#define configUSE_TASK_NOTIFICATIONS 1
 #define configUSE_MUTEXES				1
 #define configQUEUE_REGISTRY_SIZE		8
 #define configCHECK_FOR_STACK_OVERFLOW	0
@@ -152,7 +153,7 @@ to all Cortex-M ports, and do not rely on any particular library functions. */
 #define configKERNEL_INTERRUPT_PRIORITY 		( configLIBRARY_LOWEST_INTERRUPT_PRIORITY << (8 - configPRIO_BITS) )
 /* !!!! configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to zero !!!!
 See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
-#define configMAX_SYSCALL_INTERRUPT_PRIORITY 	( configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY << (8 - configPRIO_BITS) )
+#define configMAX_SYSCALL_INTERRUPT_PRIORITY 	( (configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY-2) << (8 - configPRIO_BITS) )
 	
 /* Normal assert() semantics without relying on the provision of an assert.h
 header file. */
