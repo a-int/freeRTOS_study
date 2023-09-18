@@ -3,5 +3,4 @@
 	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
 [submodule "llcm4"]
 	path = external/llcm4
-	url = git@github.com:a-int/llcm4.git
-	branch = main
+	url = https://github.com/a-int/llcm4.git
