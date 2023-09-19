@@ -5,6 +5,7 @@
 #include "usart.h"
 
 #define UART USART1
+#define USART_BAUD_RATE 115200
 
 static TickType_t mainOneShotTimer = pdMS_TO_TICKS(3333);
 static TickType_t mainAutoReload = pdMS_TO_TICKS(1000);
@@ -17,7 +18,7 @@ int main() {
   initSW();
   init_clock_100();
   init_SysTick(1000);
-  init_usart2_115200();
+  init_usart1(USART_BAUD_RATE);
 
   TimerHandle_t xOneShotTimer = xTimerCreate("One shot", mainOneShotTimer, pdFALSE, 0, vOneShotTimerTask);
   TimerHandle_t xAutoReloadTimer = xTimerCreate("Auto Reload", mainAutoReload, pdTRUE, 0, vAutoReloadTimerTask);

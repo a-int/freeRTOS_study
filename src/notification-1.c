@@ -37,7 +37,7 @@ int main(void){
   initSW();
   init_clock_100();
   init_SysTick(1000);
-  init_usart1_115200();
+  init_usart1(115200);
   NVIC_SetPriority(USART1_IRQn, 14);
 
   xTaskCreate(vIDLETask, "IDLE TASK", 100, &UART, 1, 0);

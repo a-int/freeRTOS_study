@@ -2,7 +2,7 @@
 #include <queue.h>
 
 #define UART USART1
-
+#define UART_BAUD_RATE 115200
 QueueHandle_t queue;
 
 void vSenderTask(void* pvParameter){
@@ -36,7 +36,7 @@ int main(void) {
   initSW();
   init_clock_100();
   init_SysTick(1000);
-  init_usart2_115200();
+  init_usart1(UART_BAUD_RATE);
 
   queue = xQueueCreate(5, sizeof(uint8_t));
   if(queue != NULL){
