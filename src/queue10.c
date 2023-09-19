@@ -1,6 +1,7 @@
 #include <freertos_study.h>
 #include <queue.h>
 
+#define UART USART1
 
 QueueHandle_t queue;
 
@@ -10,7 +11,7 @@ void vSenderTask(void* pvParameter){
   while(1){
     xFlag = xQueueSendToBack(queue, &data, 0);
     if(xFlag != pdPASS){
-      usart_sendString("The queue is full");
+      usart_sendString("The queue is full", UART);
     }
     vTaskDelay(500);
   }
@@ -22,11 +23,11 @@ void vReceiverTask(void* pvParameter){
   const TickType_t x200ms = pdMS_TO_TICKS(500);
   while(1){
     if(uxQueueMessagesWaiting(queue) != 0){
-      usart_sendString("The queue has to be empty");
+      usart_sendString("The queue has to be empty", UART);
     }
     xFlag = xQueueReceive(queue, &data, x200ms);
     if(xFlag == pdPASS){
-      usart_send((uint8_t*)(&data), sizeof(data));
+      usart_send((uint8_t*)(&data), sizeof(data), UART);
     }
   }
 }

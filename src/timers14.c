@@ -4,6 +4,8 @@
 #include "portmacro.h"
 #include "usart.h"
 
+#define UART USART1
+
 static TickType_t mainAutoReload1 = pdMS_TO_TICKS(1000);
 static TickType_t mainAutoReload2 = pdMS_TO_TICKS(1000);
 
@@ -40,8 +42,8 @@ int main() {
 void vAutoReloadTimerTask(TimerHandle_t timer) {
   const uint32_t id = pvTimerGetTimerID(timer);
   if(id == timer1Id){
-    usart_sendString("The timer 1 is done\r\n");
+    usart_sendString("The timer 1 is done\r\n", UART);
   } else if(id == timer2Id){
-    usart_sendString("The timer 2 is done\r\n");
+    usart_sendString("The timer 2 is done\r\n", UART);
   }
 }

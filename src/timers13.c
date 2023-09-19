@@ -4,6 +4,8 @@
 #include "portmacro.h"
 #include "usart.h"
 
+#define UART USART1
+
 static TickType_t mainOneShotTimer = pdMS_TO_TICKS(3333);
 static TickType_t mainAutoReload = pdMS_TO_TICKS(1000);
 static uint8_t uiAutoreloadCound = 0;
@@ -36,12 +38,12 @@ int main() {
 }
 
 void vOneShotTimerTask(TimerHandle_t timer) {
-  usart_sendString("One shot is done\r\n");
+  usart_sendString("One shot is done\r\n", UART);
 }
 
 void vAutoReloadTimerTask(TimerHandle_t timer) {
-  usart_sendString("Auto reloaded: ");
-  usart_sendByte(uiAutoreloadCound + '0');
+  usart_sendString("Auto reloaded: ", UART);
+  usart_sendByte(uiAutoreloadCound + '0', UART);
   uiAutoreloadCound++;
-  usart_sendString("\r\n");
+  usart_sendString("\r\n", UART);
 }

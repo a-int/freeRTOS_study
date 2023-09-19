@@ -2,6 +2,8 @@
 #include <queue.h>
 #include "usart.h"
 
+#define UART USART1
+
 QueueHandle_t queue;
 
 static void vSenderTask(void* pvParameter){
@@ -19,9 +21,9 @@ static void vReceiverTask(void* pvParameter){
   while(1){
     xFlag = xQueueReceive(queue, &data, portMAX_DELAY);
     if(xFlag == pdPASS){
-      usart_sendByte(data);
+      usart_sendByte(data, UART);
     } else {
-      usart_sendByte('2');
+      usart_sendByte('2', UART);
     }
     vTaskDelay(1);
   }
