@@ -1,6 +1,6 @@
-[submodule "external/freertos_kernel"]
-	path = external/freertos_kernel
-	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
 [submodule "llcm4"]
 	path = external/llcm4
 	url = https://github.com/a-int/llcm4.git
+[submodule "freertos"]
+	path = external/freertos
+	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git

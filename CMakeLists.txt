@@ -74,7 +74,7 @@ target_compile_definitions(freertos_config INTERFACE
 )
 
 # include after options have been defined
-add_subdirectory("external/freertos_kernel")
+add_subdirectory("external/freertos")
 add_subdirectory("external/llcm4")
 add_subdirectory("src/")
 
